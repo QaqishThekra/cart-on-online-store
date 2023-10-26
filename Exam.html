@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <script type="text/javascript">
+            function clearCart(){ 
+                var v3=document.getElementsByTagName("tr")
+                for(i=1;i<v3.length;i++){
+                    var v4=v3[1].parentNode
+                    v4.removeChild(v3[i])
+                    i--
+                }
+            }
+            function cc(row){
+                debugger;
+                x=row.parentNode.parentNode
+                y=x.parentNode
+                y.removeChild(x)
+            }
+            function subt(t){
+                var v7=t.value
+                var v6=t.parentNode.parentNode.parentNode
+                var v8=v6.getElementsByClassName("text-align ItemUnitPrice")[0].innerText
+                var v9 =v6.getElementsByClassName("text-align ItemSubTotal")[0].innerText
+                var v10 = v7*v8
+                v6.getElementsByClassName("text-align ItemSubTotal")[0].innerText=v10
+                var v12=document.getElementsByClassName("text-align ItemSubTotal")[0]
+
+
+                
+            } 
+            function add(){
+                debugger;
+                var v10=document.getElementsByClassName("shopping-cart-footer")[0]
+                var v11 =document.createElement("div")
+                v11.setAttribute("class","totals")
+                v10.appendChild(v11)
+                var v12=document.createElement("span")
+                v11.appendChild(v12)
+                var vv12 =document.createTextNode("Discount:")
+                v12.appendChild(vv12)
+                var v14=document.getElementById("SubTotals")
+                var v15=document.getElementsByClassName("totals")
+                var v13=document.createElement("span")
+                v11.appendChild(v13)
+                var v17=document.getElementById("txtdiscount").value
+                var v16=document.createTextNode(100-(100*(v17/1000)))
+                v13.appendChild(v16)
+            }
+
+        </script>
+    </head>
+    <body>
+<div class="maindiv">
+    <div class="shopping-cart">
+<table class="table-responsive table">
+    <thead>
+<tr>
+    <th class="text-align">
+        Product Name
+    </th>
+    <th class="text-align">
+        Quantity
+    </th>
+    <th class="text-align">
+        Unit Price
+    </th>
+    <th class="text-align">
+        Subtotal
+    </th>
+    <th>
+        <button  id="clearAll" class="btn btndanger" onclick="clearCart()" >Clear Cart</button>
+    </th>
+
+</tr>
+    </thead>
+    <tbody>
+        <tr >
+            <td>
+                <div class="product-item">
+                    <a class="product-thumb" href="#"><img src="000000.png" alt="Product"></a>
+                    <div class="product-info">
+                        <h4 class="product-title"><a href="#">Unionbay Park</a></h4><span>Size: 10.5</span><span>Color: Dark Blue</span>
+                    </div>
+                </div>
+            </td>
+            <td class="text-align">
+                <div class="count-input">
+                    <input type="text" class="FormCountrol" value="1" style="text-align: center;" onmouseout="subt(this)" />
+                </div>
+            </td>
+            <td class="text-align ItemUnitPrice">
+                20
+            </td>
+            <td class="text-align ItemSubTotal">
+                20
+            </td>
+            <td class="text-align">
+                <img src="trash-fill.svg" class="trashIcon" onclick="cc(this)" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="product-item">
+                    <a class="product-thumb" href="#"><img src="000002.png" alt="Product"></a>
+                    <div class="product-info">
+                        <h4 class="product-title"><a href="#">	
+                            Cole Haan Crossbody</a></h4><span>Size: -</span><span>Color: Turquoise</span>
+                    </div>
+                </div>
+            </td>
+            <td class="text-align">
+                <div class="count-input">
+                    <input type="text" class="FormCountrol" value="1"  style="text-align: center;" onmouseout="subt(this)" />
+                </div>
+            </td>
+            <td class="text-align ItemUnitPrice">
+                20
+            </td>
+            <td class="text-align ItemSubTotal">
+                20
+            </td>
+            <td class="text-align">
+                <img src="trash-fill.svg" class="trashIcon" onclick="cc(this)" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="product-item">
+                    <a class="product-thumb" href="#"><img src="000001.png" alt="Product"></a>
+                    <div class="product-info">
+                        <h4 class="product-title"><a href="#">	
+                            Daily Fabric Cap</a></h4><span>Size: XL</span><span>Color: Black</span>
+                    </div>
+                </div>
+            </td>
+            <td class="text-align">
+                <div class="count-input">
+                    <input type="text" class="FormCountrol"  value="2" style="text-align: center;"  onmouseout="subt(this)"/>
+                </div>
+            </td>
+            <td class="text-align ItemUnitPrice">
+                30
+            </td>
+            <td class="text-align ItemSubTotal">
+                60
+            </td>
+            <td class="text-align" >
+                <img src="trash-fill.svg" class="trashIcon" onclick="cc(this)" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="shopping-cart-footer">
+    <div class="column">
+        <div style="margin-left: 20px;">
+        <input type="text" id="txtdiscount" class="FormCountrol" style="display: inline-block;width: 250px;"  />
+        <input type="button" class="btn ButtonSubmit" id="ApplyCoupon" value="Apply Coupon" style="display: inline-block;" onclick="add()"/>
+    </div>
+    </div>
+    <div class="column">
+        <div id="SubTotals">
+        <div class="totals">
+        <span>Subtotal: </span>
+        <span id="subtotal">100</span>
+    </div>
+   <!-- <div class="totals">
+        <span>Discount: </span>
+        <span>10%</span>
+    </div>-->
+    
+</div>
+    <div class="totals">
+        <h4>
+        <span>Amount: </span>
+        <span id="total">100</span>
+    </h4>
+    </div>
+    </div>
+
+</div>
+</div>
+    </body>
+</html>
